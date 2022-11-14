@@ -7,7 +7,7 @@
 </div>
 
 <div class="my-1">
-    <a class="btn btn-lg btn-primary" href="form_agregar_categoria.php" role="button">Agregar caegoria</a>
-    <a class="btn btn-lg btn-primary" href="form_agregar_prenda.php" role="button">Agregar prenda</a>
+    <a class="btn btn-lg btn-primary" href="form_agregar_categoria.php" role="button">Agregar categoria</a>
+    <a class="btn btn-lg btn-primary" href="form_agregar_producto.php" role="button">Agregar producto</a>
     <a class="btn btn-secondary" href="salir.php" role="button">Salir</a>
 </div>

@@ -57,6 +57,7 @@ if (isset ($_SESSION['user'])){ ?>
                     <th>Observaciones</th>
                     <th>Foto</th>
                     <th>Stock</th>
+                    <th>Destacado</th>
                     <th>Modificar</th>
                     <th>Eliminar</th>
                 </tr>
@@ -75,6 +76,13 @@ if (isset ($_SESSION['user'])){ ?>
                 <td><?php echo $fila['observaciones'];?> </td>
                 <td><img src="data:image/png;base64, <?php echo base64_encode($fila['foto']);?>" alt="" width="100px" height="100px"> </td>
                 <td><?php echo $fila['stock'];?> </td>
+                <td><?php
+                        if($fila['destacado'] == 1){
+                            echo 'SI';
+                        }else{
+                            echo 'NO';
+                        }
+                    ?> </td>
                 <td><a class="btn btn-primary" href="form_agregar_prenda.php?id_producto=<?php echo $fila['id_producto'];?>" role="button">Modificar</a></td>
                 <td><a class="btn btn-danger" href="crud/eliminar.php?id_producto=<?php echo $fila['id_producto'];?>" role="button">Borrar</a></td>
             </tr>

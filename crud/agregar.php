@@ -22,6 +22,7 @@ if (isset ($_POST['id_categoria'], $_POST['categoria'], $_POST['observaciones'])
     
     if ($resultado != null){
         header ('Location: ../login.php?resultado=ok');
+        die;
     }else{
         echo 'Ocurrio un error!';
     }
@@ -61,10 +62,9 @@ if (isset ($_POST['id_producto'], $_POST['id_categoria'], $_POST['nombre'], $_PO
     
     $resultado = mysqli_query($conexion, $sql);
     
-    var_dump($resultado);
-    
     if ($resultado != null){
         header ('Location: ../login.php?resultado=ok');
+        die;
     }else{
         echo 'Ocurrio un error!';
     }

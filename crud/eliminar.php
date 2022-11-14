@@ -17,6 +17,27 @@ if (isset ($_GET['id_categoria'])){
     }else{
         echo 'Ocurrio un error!';
     } 
-}else{
+}
+
+if (isset ($_GET['id_producto'])){
+    $id_producto = $_GET['id_producto'];
+    
+    require '../config/config.php';
+    require '../appdb/conexion.php';
+    
+    $sql = "DELETE FROM productos WHERE id_producto = $id_producto";
+    
+    
+    $resultado = mysqli_query($conexion, $sql);
+    
+    if ($resultado != null){
+        header ('Location: ../login.php?resultado=borradook');
+    }else{
+        echo 'Ocurrio un error!';
+    } 
+}
+
+
+else{
     header ('Location: ../index.php');
 }

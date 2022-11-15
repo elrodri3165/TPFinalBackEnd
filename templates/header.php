@@ -15,8 +15,8 @@
         </ul>
 
         <div class="col-md-3 text-end">
-            <button type="button" class="btn btn-outline-primary me-2" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</button>
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrase</button>
+            <button type="button" class="btn btn-outline-dark me-2" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</button>
+            <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrase</button>
         </div>
     </header>
 </div>

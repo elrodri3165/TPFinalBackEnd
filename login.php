@@ -83,7 +83,7 @@ if (isset ($_SESSION['user'])){ ?>
                             echo 'NO';
                         }
                     ?> </td>
-                <td><a class="btn btn-primary" href="form_agregar_prenda.php?id_producto=<?php echo $fila['id_producto'];?>" role="button">Modificar</a></td>
+                <td><a class="btn btn-primary" href="form_agregar_producto.php?id_producto=<?php echo $fila['id_producto'];?>" role="button">Modificar</a></td>
                 <td><a class="btn btn-danger" href="crud/eliminar.php?id_producto=<?php echo $fila['id_producto'];?>" role="button">Borrar</a></td>
             </tr>
             <?php } } ?>

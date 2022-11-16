@@ -1,4 +1,4 @@
- <?php require 'appdb/conexion.php'; ?>
+<?php require 'appdb/conexion.php'; ?>
 <!DOCTYPE html>
 <html lang="es">
 

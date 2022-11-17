@@ -1,8 +1,8 @@
 <?php
 session_start();
-if (isset ($_SESSION['user'])){ ?>
-
-
+/*si encuentro algo en la session usuario y si el rol es adminstrador dejo ingresar al panel.
+sino redireccio a index con error en sin permisos*/
+if (isset ($_SESSION['user']) && $_SESSION['rol'] == 1){ ?>
 <!DOCTYPE html>
 <html lang="es">
 

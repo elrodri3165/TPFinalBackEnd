@@ -34,12 +34,22 @@
         $resultado  = mysqli_query($conexion, $sql);
         
         foreach ($resultado as $row){ ?>
-            <a class="py-2 d-none d-md-inline-block text-white" href="verproductos.php?categoria=<?php echo $row['categoria']?>"><?php echo $row['categoria']?></a>
-            
-            <?php
-        } ?>
-        
+        <a class="py-2 d-none d-md-inline-block text-white" href="verproductos.php?categoria=<?php echo $row['categoria']?>"><?php echo $row['categoria']?></a>
+
+        <?php
+        }
+        ?>
     </nav>
+    <?php
+    if (isset ($_SESSION['rol']) && $_SESSION['rol'] == 2){ ?>
+        <div class="text-white d-flex justify-content-end px-3"><div class="p-2">Usuario: <?php echo $_SESSION['user'] ?>  </div>
+            <div class="">
+                <a class="btn btn-logout" href="salir.php" role="button">Salir</a>
+            </div>
+        </div>
+        <?php
+        } 
+    ?>
 </header>
 
 

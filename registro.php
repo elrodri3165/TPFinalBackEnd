@@ -7,10 +7,11 @@ $password = $_POST['password'];
 $apellido = $_POST['apellido'];
 $nombre = $_POST['nombre'];
 $email = $_POST['email'];
+$rol = 2;
 
 
 
-$query = "INSERT INTO users (dni, apellido, nombre, password, email, activo) VALUES ('$dni', '$apellido', '$nombre', '$password', '$email', 1)";
+$query = "INSERT INTO users (dni, apellido, nombre, password, email, id_rol, activo) VALUES ('$dni', '$apellido', '$nombre', '$password', '$email', $rol ,1)";
 
 $resultado = mysqli_query($conexion, $query);
 

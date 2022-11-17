@@ -16,8 +16,17 @@ foreach ($resultado as $row){
         $_SESSION['email'] = $row['email'];
         $_SESSION['apellido'] = $row['apellido'];
         $_SESSION['nombre'] = $row['nombre'];
-        header ('Location: login.php');
-        die;
+        $_SESSION['rol'] = $row['id_rol'];
+        
+        if($_SESSION['rol'] == 1){
+            header ('Location: login.php');
+            die;
+        }
+        
+        if($_SESSION['rol'] == 2){
+            header ('Location: index.php');
+            die;
+        }
     }
     
 }

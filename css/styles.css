@@ -15,6 +15,15 @@
 .dropdown-toggle {
     outline: 0;
 }
+.btn-logout{
+    border: 1px solid white !important;
+    color: white !important;
+}
+.btn-logout:hover{
+    border: 1px solid white !important;
+    color: white !important;
+}
+
 
 /*FIN DE ESTILOS DE HEADER*/
 

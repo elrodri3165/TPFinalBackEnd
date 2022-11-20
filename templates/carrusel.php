@@ -33,7 +33,7 @@ if ($cantidad_productos > 3 ){ ?>
                                 </div>
 
                                 <div class="amazingcarousel-readmore">
-                                    <a href="data:image/png;base64, <?php echo base64_encode($row['foto']);?> " target="__TARGET__">Ir al producto</a>
+                                    <a href="verproducto.php?id_producto=<?php echo ($row['id_producto']);?> " target="">Ir al producto</a>
                                 </div>
                             </div>
                         </li>

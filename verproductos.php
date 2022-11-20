@@ -1,4 +1,8 @@
-<?php require 'appdb/conexion.php';
+<?php 
+session_start();
+require 'appdb/conexion.php';
+require 'functions/carrito.php';
+
 if (isset ($_GET['categoria'])){
     $categoria = $_GET['categoria'];
     $sql = "SELECT productos.id_producto, productos.nombre, productos.observaciones, productos.foto, productos.stock, productos.precio, categorias.categoria FROM productos JOIN categorias ON productos.id_categoria = categorias.id_categoria WHERE productos.activo = 1 AND categorias.categoria = '$categoria'";
@@ -31,7 +35,8 @@ $productos = mysqli_query($conexion, $sql);
 
                     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
-                        <?php foreach ($productos as $producto){ ?>
+                        <?php 
+                        foreach ($productos as $producto){ ?>
 
                         <div class="col">
                             <div class="card shadow-sm">
@@ -46,7 +51,6 @@ $productos = mysqli_query($conexion, $sql);
                                     <div class="d-flex justify-content-between align-items-end">
                                         <div class="btn-group">
                                             <a class="btn btn-sm btn-outline-dark" href="verproducto.php?id_producto=<?php echo $producto['id_producto']?>" role="button">Ver</a>
-                                            <button type="button" class="btn btn-sm btn-outline-dark">Comprar</button>
                                         </div>
                                         <small class="text-muted">Stock: <?php echo $producto['stock']?></small>
                                     </div>

@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-if (isset ($_GET['id_categoria'])){
+if (isset ($_SESSION['user'], $_GET['id_categoria'])){
     
     $id_categoria = $_GET['id_categoria'];
     
@@ -14,12 +15,13 @@ if (isset ($_GET['id_categoria'])){
     
     if ($resultado != null){
         header ('Location: ../login.php?resultado=borradook');
+        die;
     }else{
         echo 'Ocurrio un error!';
     } 
 }
 
-if (isset ($_GET['id_producto'])){
+if (isset ($_SESSION['user'], $_GET['id_producto'])){
     $id_producto = $_GET['id_producto'];
     
     require '../config/config.php';
@@ -32,6 +34,7 @@ if (isset ($_GET['id_producto'])){
     
     if ($resultado != null){
         header ('Location: ../login.php?resultado=borradook');
+        die;
     }else{
         echo 'Ocurrio un error!';
     } 

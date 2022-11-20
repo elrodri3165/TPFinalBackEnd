@@ -10,10 +10,15 @@
             <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
             <li><a href="index.php" class="nav-link px-2 link-dark">Nosotros</a></li>
             <li><a href="verproductos.php" class="nav-link px-2 link-dark">Ver productos</a></li>
-            <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
+            <li><a href="#" class="nav-link px-2 link-dark">Contacto</a></li>
+            
         </ul>
 
         <div class="col-md-3 text-end">
+            <a class="btn me-3 text-dark position-relative" href="vercarrito.php">
+                <i class="bi bi-cart-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"><?php echo $_SESSION['carrito']['cantidad_productos'] ?></span>
+            </a>
+            
             <button type="button" class="btn btn-outline-dark me-2" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</button>
             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrase</button>
         </div>
@@ -42,12 +47,13 @@
     </nav>
     <?php
     if (isset ($_SESSION['rol']) && $_SESSION['rol'] == 2){ ?>
-        <div class="text-white d-flex justify-content-end px-3"><div class="p-2">Usuario: <?php echo $_SESSION['user'] ?>  </div>
-            <div class="">
-                <a class="btn btn-logout" href="salir.php" role="button">Salir</a>
-            </div>
+    <div class="text-white d-flex justify-content-end px-3">
+        <div class="p-2">Usuario: <?php echo $_SESSION['user'] ?> </div>
+        <div class="">
+            <a class="btn btn-logout" href="salir.php" role="button">Salir</a>
         </div>
-        <?php
+    </div>
+    <?php
         } 
     ?>
 </header>

@@ -1,6 +1,7 @@
 <?php
+session_start();
 
-if (isset ($_POST['id_categoria'], $_POST['categoria'], $_POST['observaciones'])){
+if (isset ($_SESSION['user'], $_POST['id_categoria'], $_POST['categoria'], $_POST['observaciones'])){
     
     $id_categoria = $_POST['id_categoria'];
     $categoria = $_POST['categoria'];
@@ -28,7 +29,7 @@ if (isset ($_POST['id_categoria'], $_POST['categoria'], $_POST['observaciones'])
     }
 }
 
-if (isset ($_POST['id_producto'], $_POST['id_categoria'], $_POST['nombre'], $_POST['observaciones'], $_POST['stock'], $_POST['precio'])){
+if (isset ($_SESSION['user'], $_POST['id_producto'], $_POST['id_categoria'], $_POST['nombre'], $_POST['observaciones'], $_POST['stock'], $_POST['precio'])){
     
     $id_producto = $_POST['id_producto'];
     $id_categoria = $_POST['id_categoria'];

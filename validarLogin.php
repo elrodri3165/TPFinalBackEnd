@@ -12,6 +12,7 @@ $resultado = mysqli_query($conexion, $query);
 foreach ($resultado as $row){
     
     if ($dni == $row['dni'] && $password == $row ['password']){
+        $_SESSION['id_user'] = $row['id_user'];
         $_SESSION['user'] = $row['dni'];
         $_SESSION['email'] = $row['email'];
         $_SESSION['apellido'] = $row['apellido'];

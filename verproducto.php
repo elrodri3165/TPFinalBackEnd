@@ -1,4 +1,8 @@
-<?php require 'appdb/conexion.php';
+<?php 
+session_start();
+require 'appdb/conexion.php';
+require 'functions/carrito.php';
+
 if (isset ($_GET['id_producto'])){
     $id_producto = $_GET['id_producto'];
     $sql = "SELECT * FROM productos WHERE activo = 1 AND id_producto = $id_producto";
@@ -29,7 +33,7 @@ if (isset ($_GET['id_producto'])){
                             <div class="card shadow-sm">
 
                                 <img src="data:image/png;base64, <?php echo base64_encode($producto['foto']);?>" alt="" width="100%" height="100%">
-                                
+
                                 <div class="text-center bg-dark text-white p-3"><?php echo $producto['nombre']?></div>
 
 
@@ -37,8 +41,23 @@ if (isset ($_GET['id_producto'])){
                                     <p class="card-text"><?php echo $producto['observaciones']?></p>
                                     <div class="d-flex justify-content-between align-items-end">
                                         <div class="btn-group">
+
+                                            <?php
                                             
-                                            <button type="button" class="btn btn-sm btn-outline-dark">Comprar</button>
+                                            if ($producto['stock'] > 0){ ?>
+                                            <a class="btn btn-sm btn-outline-dark" href="verproducto.php?agregar&id_producto=<?php echo $id_producto ?>">Agregar a carrito</a>
+                                            <?php
+                                            }else{ ?>
+                                            <div class="alert alert-dark alert-dismissible fade show" role="alert">
+                                                <strong>Sin stock</strong>
+                                                <p>Este producto no tiene stock para comprar.</p>
+                                            </div>
+                                            <?php
+                                            }
+
+
+                                            ?>
+
                                         </div>
                                         <small class="text-muted">Stock: <?php echo $producto['stock']?></small>
                                     </div>
@@ -61,4 +80,5 @@ if (isset ($_GET['id_producto'])){
 
     </div>
 </body>
+
 </html>

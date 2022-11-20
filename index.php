@@ -1,5 +1,7 @@
-<?php require 'appdb/conexion.php'; 
+<?php 
 session_start();
+require 'appdb/conexion.php';
+require 'functions/carrito.php';
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -10,6 +12,8 @@ session_start();
     <div class="container-fluid m-0 p-0">
 
         <?php require 'templates/header.php'; ?>
+        
+        <?php require 'templates/notificacion.php'; ?>
 
         <main>
             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">

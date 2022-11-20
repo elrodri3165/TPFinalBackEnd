@@ -11,14 +11,14 @@
             <li><a href="index.php" class="nav-link px-2 link-dark">Nosotros</a></li>
             <li><a href="verproductos.php" class="nav-link px-2 link-dark">Ver productos</a></li>
             <li><a href="#" class="nav-link px-2 link-dark">Contacto</a></li>
-            
+
         </ul>
 
         <div class="col-md-3 text-end">
             <a class="btn me-3 text-dark position-relative" href="vercarrito.php">
                 <i class="bi bi-cart-fill"></i><span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-dark"><?php echo $_SESSION['carrito']['cantidad_productos'] ?></span>
             </a>
-            
+
             <button type="button" class="btn btn-outline-dark me-2" data-bs-toggle="modal" data-bs-target="#modalLogin">Login</button>
             <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalRegistro">Registrase</button>
         </div>
@@ -26,25 +26,7 @@
 </div>
 
 <header class="site-header sticky-top py-1">
-    <nav class="container d-flex flex-column flex-md-row justify-content-between">
-        <a class="py-2" href="verproductos.php" aria-label="Product">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="d-block mx-auto" role="img" viewBox="0 0 24 24">
-                <title>Product</title>
-                <circle cx="12" cy="12" r="10" />
-                <path d="M14.31 8l5.74 9.94M9.69 8h11.48M7.38 12l5.74-9.94M9.69 16L3.95 6.06M14.31 16H2.83m13.79-4l-5.74 9.94" />
-            </svg>
-        </a>
-        <?php 
-        $sql = "SELECT categoria FROM categorias WHERE activo = 1";
-        $resultado  = mysqli_query($conexion, $sql);
-        
-        foreach ($resultado as $row){ ?>
-        <a class="py-2 d-none d-md-inline-block text-white" href="verproductos.php?categoria=<?php echo $row['categoria']?>"><?php echo $row['categoria']?></a>
 
-        <?php
-        }
-        ?>
-    </nav>
     <?php
     if (isset ($_SESSION['rol']) && $_SESSION['rol'] == 2){ ?>
     <div class="text-white d-flex justify-content-end px-3">
@@ -59,11 +41,44 @@
 </header>
 
 
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark text-white">
+    <div class="container-fluid">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon text-white"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent">
+            <ul class="navbar-nav mb-2 mb-lg-0 ">
+                <li class="nav-item mx-5">
+                    <a class="nav-link text-white" href="verproductos.php" aria-label="Product">
+                        TODAS
+                    </a>
+                </li>
+                
+                <?php 
+                $sql = "SELECT categoria FROM categorias WHERE activo = 1";
+                $resultado  = mysqli_query($conexion, $sql);
+        
+                foreach ($resultado as $row){ ?>
+                <li class="nav-item mx-5">
+                    <a href="verproductos.php?categoria=<?php echo $row['categoria']?>" role="button" class="nav-link text-white"><?php echo $row['categoria']?></a>
+                </li>
+
+                                    <?php
+                                    }
+                                    ?>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+
 <div class="modal modal-signin bg-secondary py-5" tabindex="-1" role="dialog" id="modalLogin">
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
-                <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
                 <h1 class="fw-bold mb-0 fs-2">Login de usuarios</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
@@ -93,7 +108,6 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content rounded-4 shadow">
             <div class="modal-header p-5 pb-4 border-bottom-0">
-                <!-- <h1 class="modal-title fs-5" >Modal title</h1> -->
                 <h1 class="fw-bold mb-0 fs-2">Registro de usuarios</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>

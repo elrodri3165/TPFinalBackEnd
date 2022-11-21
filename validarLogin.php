@@ -2,6 +2,11 @@
 session_start();
 require 'appdb/conexion.php';
 
+$origen = $_SERVER['HTTP_REFERER'];
+if (strstr($origen, '?')){
+    $origen = strstr($origen, '?', true);
+}
+
 $dni  = $_POST['dni'];
 $password = $_POST['password'];
 
@@ -25,7 +30,7 @@ foreach ($resultado as $row){
         }
         
         if($_SESSION['rol'] == 2){
-            header ('Location: index.php');
+            header ("Location: $origen");;
             die;
         }
     }

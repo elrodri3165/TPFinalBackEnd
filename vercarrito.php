@@ -20,7 +20,7 @@ require 'functions/carrito.php';
                     <i class="bi bi-wallet2" style="font-size:60px;"></i>
                     <i class="bi bi-cash-coin" style="font-size:60px;"></i>
                     <h2>Finalizar la compra</h2>
-                    <p class="lead">Below is an example form built entirely with Bootstrap’s form controls. Each required form group has a validation state that can be triggered by attempting to submit the form without completing it.</p>
+                    <p class="lead">Por favor completa los datos para finalizar la compra. Luego un vendedor te contactara para concretar el pago. Si luego de 24 hrs no se realiza el pago, se rechaza la venta y el stock vuelve a estar disponible para la venta.</p>
                 </div>
 
                 <div class="row g-5">

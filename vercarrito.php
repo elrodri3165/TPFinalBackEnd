@@ -31,6 +31,7 @@ require 'functions/carrito.php';
                         </h4>
                         <ul class="list-group mb-3">
                             <?php 
+                            $precio_total = 0;
                             foreach ($_SESSION['carrito']['productos'] as $producto){
                                 $sql = "SELECT * FROM productos WHERE activo = 1 AND id_producto = $producto";
                                 $producto = mysqli_query($conexion, $sql);
@@ -44,7 +45,8 @@ require 'functions/carrito.php';
                             </li>
 
                             <?php 
-                                }
+                                $precio_total = $precio_total + $row['precio'];
+                            }
                             }
                             ?>
 
@@ -103,25 +105,48 @@ require 'functions/carrito.php';
 
                             <div class="my-3">
                                 <div class="form-check">
-                                    <input name="metodo-pago" id="credit" name="paymentMethod" type="radio" class="form-check-input" value="EFECTIVO" required>
+                                    <input name="metodo-pago" id="credit" name="paymentMethod" type="radio" class="form-check-input" value="EFECTIVO" disabled>
                                     <label class="form-check-label" for="credit">Efectivo</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="metodo-pago" id="debit" name="paymentMethod" type="radio" class="form-check-input" value="TRANSFERENCIA">
+                                    <input name="metodo-pago" id="debit" name="paymentMethod" type="radio" class="form-check-input" value="TRANSFERENCIA" disabled>
                                     <label class="form-check-label" for="debit">Trasferencia bancaria</label>
                                 </div>
                                 <div class="form-check">
-                                    <input name="metodo-pago" name="paymentMethod" type="radio" class="form-check-input" value="MERCADO-PAGO">
+                                    <input name="metodo-pago" name="paymentMethod" type="radio" class="form-check-input" value="MERCADO-PAGO" checked >
                                     <label class="form-check-label" for="paypal">Mercado Pago</label>
                                 </div>
-                                <p>*Luego de concretar la compra reservaremos stock por 24 hrs y un vendedor te contactara vía correo electrónico para que abones con tu medio de pago elegido.</p>
+                                
                             </div>
 
                             <hr class="my-4">
 
                             <?php 
+
+                            /*mercado pago */
+                            require_once 'vendor/autoload.php';
+                            MercadoPago\SDK::setAccessToken("YOUR TOKEN HERE");
+                            $payment = new MercadoPago\Payment();
+                            $preference = new MercadoPago\Preference();
+                            $array_productos = array();
+
+                            $item = new MercadoPago\Item();
+                            $item->title = 'Compra';
+                            $item->quantity = '1';
+                            $item->unit_price = $precio_total;
+                        
+
+                            $preference->items = array($item);
+                            $preference ->expires = true;
+                            $preference ->expiration_date_from = date("c");
+                            $preference ->expiration_date_to = date("c", time() + 300);
+
+                            $preference->save();
+                            /*mercado pago */
+
                             if (isset($_SESSION['user']) && $_SESSION['carrito']['cantidad_productos'] > 0){ ?>
-                            <button class="w-100 btn btn-dark btn-lg" type="submit">Confirmar compra</button>
+                            
+                            <a class="w-100 btn btn-dark btn-lg" href="<?php echo $preference->init_point ?>">Confirmar compra</a>
 
                             <?php
                             }else{ ?>
